@@ -1,0 +1,27 @@
+
+syntax = "proto3";
+
+package player;
+option  java_multiple_files=true;
+option java_package="com.nashtech.grpc";
+option  java_outer_classname="PlayerProto";
+
+
+service PlayerService{
+
+  // UNARY - RPC -> get current stock price
+  rpc getPlayersOfTeam(PlayerRequest) returns (stream PlayerResponse);
+
+  //server streaming
+
+}
+
+
+message PlayerRequest{
+  int64 team_id=1;
+}
+
+message PlayerResponse{
+   int64 player_id=1;
+   string player_name=2;
+}

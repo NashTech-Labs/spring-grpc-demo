@@ -1,0 +1,32 @@
+# Java compiled class files
+*.class
+
+# Log files
+logs/
+*.log
+*.log.*
+
+# Maven specific
+.mvn/
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Environment and configuration files (optional)
+.env
+.env.local
+.env.*.local
+*.db
+*.sqlite
