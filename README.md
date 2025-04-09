@@ -1,7 +1,7 @@
 # Spring-Grpc-Demo Project
 
 ## Overview
-This project consists of two microservices:
+This is a Spring Boot project demonstrating interservice communication between microservices using gRPC and REST APIs. It consists of two microservices:
 1. **Player Service**: Manages players and provides gRPC streaming to fetch players by team.
 2. **Team Service**: Retrieves team players by communicating with Player Service via gRPC.
 
