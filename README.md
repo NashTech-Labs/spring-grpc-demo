@@ -1,4 +1,4 @@
-# GrpcDemo Project
+# spring-grpc-demo Project
 
 ## Overview
 This project consists of two microservices:
