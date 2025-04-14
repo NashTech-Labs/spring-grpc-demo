@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.*;
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TeamControllerIntegrationTest {
+public class TeamControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
