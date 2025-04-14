@@ -18,13 +18,13 @@ import java.util.stream.Collectors;
  * @author [Nadra Ibrahim]
  */
 @Service
-public class TeamDatabaseDatabaseServiceImpl implements TeamDatabaseService {
+public class TeamDatabaseServiceImpl implements TeamDatabaseService {
 
     private TeamRepository teamRepository;
 
     private TeamGrpcClientService teamGrpcClientService;
 
-    public TeamDatabaseDatabaseServiceImpl(TeamRepository teamRepository, TeamGrpcClientService teamGrpcClientService) {
+    public TeamDatabaseServiceImpl(TeamRepository teamRepository, TeamGrpcClientService teamGrpcClientService) {
         this.teamRepository = teamRepository;
         this.teamGrpcClientService = teamGrpcClientService;
     }

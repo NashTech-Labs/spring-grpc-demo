@@ -3,7 +3,7 @@ package com.nashtech.teamService.service;
 import com.nashtech.teamService.entities.Player;
 import com.nashtech.teamService.entities.Team;
 import com.nashtech.teamService.repository.TeamRepository;
-import com.nashtech.teamService.service.implementation.TeamDatabaseDatabaseServiceImpl;
+import com.nashtech.teamService.service.implementation.TeamDatabaseServiceImpl;
 import com.nashtech.teamService.service.implementation.TeamGrpcClientService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,7 @@ public class TeamDatabaseServiceTest {
     @Mock
     TeamRepository teamRepository;
     @InjectMocks
-    TeamDatabaseDatabaseServiceImpl teamDatabaseServiceImpl;
+    TeamDatabaseServiceImpl teamDatabaseServiceImpl;
     @Mock
     TeamGrpcClientService teamGrpcClientService;
     private static Team team= null;

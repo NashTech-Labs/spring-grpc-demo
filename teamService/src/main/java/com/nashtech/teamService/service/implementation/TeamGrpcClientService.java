@@ -24,7 +24,7 @@ import java.util.List;
 @Service
 public class TeamGrpcClientService{
 
-    @GrpcClient("teamService")
+    @GrpcClient("teamDatabaseService")
     private PlayerServiceGrpc.PlayerServiceBlockingStub serviceBlockingStub;
 
     /**
