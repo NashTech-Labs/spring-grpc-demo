@@ -32,10 +32,5 @@ public class Player {
     private Long playerId;
     private String playerName;
     private Long teamId;
-
-    public Player(long playerId, String playerName) {
-        this.playerId = playerId;
-        this.playerName = playerName;
-    }
 }
 

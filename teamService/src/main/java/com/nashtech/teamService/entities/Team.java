@@ -15,7 +15,7 @@ import java.util.List;
  * Entity class representing a Team.
  * <p>
  * This class is mapped to a database table using JPA annotations.
- * Each instance corresponds to a row in the "player" table.
+ * Each instance corresponds to a row in the "team" table.
  * </p>
  *
  * @author [Nadra Ibrahim]

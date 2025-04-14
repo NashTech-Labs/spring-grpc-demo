@@ -9,13 +9,11 @@ option  java_outer_classname="PlayerProto";
 
 service PlayerService{
 
-  // UNARY - RPC -> get current stock price
+  //server streaming
   rpc getPlayersOfTeam(PlayerRequest) returns (stream PlayerResponse);
 
-  //server streaming
 
 }
-
 
 message PlayerRequest{
   int64 team_id=1;
@@ -24,4 +22,5 @@ message PlayerRequest{
 message PlayerResponse{
    int64 player_id=1;
    string player_name=2;
+   int64 team_id=3;
 }

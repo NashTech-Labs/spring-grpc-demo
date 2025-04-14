@@ -25,18 +25,23 @@ public class TeamController {
     }
 
     @PostMapping
-    public Team create(@RequestBody Team team){
-        return teamService.create(team);
+    public Team createTeam(@RequestBody Team team){
+        return teamService.createTeam(team);
     }
 
     @GetMapping("/{teamId}")
-    public Team getOne(@PathVariable Long teamId){
+    public Team getSingleTeam(@PathVariable Long teamId){
         return teamService.getOne(teamId);
     }
 
     @GetMapping
-    public List<Team> getAll(){
+    public List<Team> getAllTeams(){
         return teamService.getAll();
+    }
+
+    @DeleteMapping
+    public void deleteTeam(@PathVariable Long teamId){
+        teamService.deleteTeam(teamId);
     }
 }
 

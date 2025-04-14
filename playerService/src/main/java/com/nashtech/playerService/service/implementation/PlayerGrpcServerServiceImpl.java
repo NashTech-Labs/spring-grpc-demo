@@ -14,18 +14,18 @@ import java.util.concurrent.TimeUnit;
 /**
  * gRPC Server Service implementation to return players from Player Service to the Team Service.
  * <p>
- * This class establishes a gRPC connection to the Player Service and
- * retrieves players belonging to a specific team using server streaming.
+ * This class establishes a gRPC connection to the Team Service and
+ * returns players belonging to a specific team using server streaming.
  * </p>
  *
  * @author [Nadra Ibrahim]
  */
 @GrpcService
-public class PlayerGrpcServiceImpl extends PlayerServiceGrpc.PlayerServiceImplBase {
+public class PlayerGrpcServerServiceImpl extends PlayerServiceGrpc.PlayerServiceImplBase {
 
     private final PlayerRepository playerRepository;
 
-    public PlayerGrpcServiceImpl(PlayerRepository playerRepository) {
+    public PlayerGrpcServerServiceImpl(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
 
@@ -35,7 +35,7 @@ public class PlayerGrpcServiceImpl extends PlayerServiceGrpc.PlayerServiceImplBa
      *
      * @param request The gRPC request (the teamId in this case).
      * @param responseObserver The observer to send the response.
-     *                         that is, the stream of data to be returned
+     *                         that is, the stream of data(players) to be returned
      */
     @Override
     public void getPlayersOfTeam(PlayerRequest request,
@@ -46,7 +46,7 @@ public class PlayerGrpcServiceImpl extends PlayerServiceGrpc.PlayerServiceImplBa
         for(Player player : players){
             PlayerResponse playerResponse = PlayerResponse.newBuilder()
                 .setPlayerId(player.getPlayerId())
-                .setPlayerName(player.getPlayerName())
+                .setPlayerName(player.getPlayerName()).setTeamId(player.getTeamId())
                 .build();
             responseObserver.onNext(playerResponse); // Send response to client
 

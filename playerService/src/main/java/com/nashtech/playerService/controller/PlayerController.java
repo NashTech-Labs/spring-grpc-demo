@@ -25,17 +25,17 @@ public class PlayerController {
     }
 
     @PostMapping
-    public Player create(@RequestBody Player player){
+    public Player createPlayer(@RequestBody Player player){
         return playerDatabaseService.create(player);
     }
 
     @GetMapping("/{playerId}")
-    public Player getOne(@PathVariable Long playerId){
+    public Player getSinglePlayer(@PathVariable Long playerId){
         return playerDatabaseService.getOne(playerId);
     }
 
     @GetMapping
-    public List<Player> getAll(){
+    public List<Player> getAllPlayers(){
         return playerDatabaseService.getAll();
     }
 }
