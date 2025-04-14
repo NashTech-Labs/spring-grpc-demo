@@ -122,7 +122,13 @@ cd ../teamService
 mvn clean install
 ```
 
-### 3. Run the Services
+### 3. Mark Directory as Source Root
+1. Right-click on the directory: playerService/target/generated-sources.
+2. Choose "Mark Directory as".
+3. Select "Sources Root"
+4. Do the same for teamService
+
+### 4. Run the Services
 #### Start the Player Service
 ```sh
 cd playerService
@@ -134,8 +140,11 @@ cd teamService
 mvn spring-boot:run
 ```
 
-### 4. Test gRPC-Enabled REST Endpoints
-Since the `TeamService` internally communicates with `PlayerService` via gRPC, testing the REST endpoint of `TeamService` will also validate the gRPC interaction.
+### 5. Test gRPC-Enabled REST Endpoints
+1. Create a team and its players using the TeamService and PlayerService.
+You can use tools like Postman or run cURL commands to make the necessary API calls.
+2. Once the team and players have been created, invoke the TeamService endpoint to retrieve the team details.
+This endpoint will also fetch and include the associated players, demonstrating the gRPC-enabled communication between services.
 
 #### Fetch Players of a Team
 ```sh
