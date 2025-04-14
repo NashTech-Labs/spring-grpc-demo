@@ -13,7 +13,7 @@ import java.util.List;
  * @author [Nadra Ibrahim]
  */
 public interface PlayerDatabaseService {
-    public Player create(Player player);
-    public Player getOne(Long playerId);
-    public List<Player> getAll();
+    Player create(Player player);
+    Player getOne(Long playerId);
+    List<Player> getAll();
 }

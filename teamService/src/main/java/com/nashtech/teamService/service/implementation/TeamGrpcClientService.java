@@ -4,7 +4,6 @@ import com.nashtech.grpc.PlayerRequest;
 import com.nashtech.grpc.PlayerResponse;
 import com.nashtech.grpc.PlayerServiceGrpc;
 import com.nashtech.teamService.entities.Player;
-import com.nashtech.teamService.service.TeamService;
 import io.grpc.StatusRuntimeException;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
@@ -44,12 +43,13 @@ public class TeamGrpcClientService{
         List<Player> players = new ArrayList<>();
         try {
             Iterator<PlayerResponse> playerResponses = serviceBlockingStub.getPlayersOfTeam(request);
-            for (int i = 1; playerResponses.hasNext(); i++) {
+            while (playerResponses.hasNext()) {
                 PlayerResponse playerResponse = playerResponses.next();
                 Player player = new Player(playerResponse.getPlayerId(), playerResponse.getPlayerName(), playerResponse.getTeamId());
                 players.add(player);
             }
         } catch (StatusRuntimeException e) {
+            e.printStackTrace();
         }
         return players;
     }

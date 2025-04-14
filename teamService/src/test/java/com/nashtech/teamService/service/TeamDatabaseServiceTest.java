@@ -3,7 +3,7 @@ package com.nashtech.teamService.service;
 import com.nashtech.teamService.entities.Player;
 import com.nashtech.teamService.entities.Team;
 import com.nashtech.teamService.repository.TeamRepository;
-import com.nashtech.teamService.service.implementation.TeamDatabaseServiceImpl;
+import com.nashtech.teamService.service.implementation.TeamDatabaseDatabaseServiceImpl;
 import com.nashtech.teamService.service.implementation.TeamGrpcClientService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -25,11 +25,10 @@ public class TeamDatabaseServiceTest {
     @Mock
     TeamRepository teamRepository;
     @InjectMocks
-    TeamDatabaseServiceImpl teamDatabaseServiceImpl;
+    TeamDatabaseDatabaseServiceImpl teamDatabaseServiceImpl;
     @Mock
     TeamGrpcClientService teamGrpcClientService;
     private static Team team= null;
-    private static Long teamId= 1L;
 
     @BeforeAll
     public static void init(){
@@ -55,6 +54,7 @@ public class TeamDatabaseServiceTest {
     @Test
     void getOneShouldRetrieveTheTeamWithPlayers() {
         // Arrange
+        Long teamId = 1L;
         List<Player> players = List.of(new Player(1L, "Iron Man", teamId), new Player(2L, "Hulk", teamId));
         team.setPlayers(players);
         when(teamRepository.findById(teamId)).thenReturn(Optional.of(team));
@@ -76,9 +76,7 @@ public class TeamDatabaseServiceTest {
         when(teamRepository.findById(teamId)).thenReturn(Optional.empty());
 
         // Act & Assert
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            teamDatabaseServiceImpl.getOne(teamId);
-        });
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> teamDatabaseServiceImpl.getOne(teamId));
 
         assertEquals("Team not found.", exception.getMessage());
         verify(teamRepository, times(1)).findById(teamId);
@@ -90,7 +88,7 @@ public class TeamDatabaseServiceTest {
         // Arrange
         List<Player> firstTeamPlayers = List.of(new Player(6L, "Sunil", 3L), new Player(7L, "Sachin", 3L));
         team.setPlayers(firstTeamPlayers);
-        List<Team> teams = List.of(new Team(3L, "BasketBall", firstTeamPlayers), new Team(4L, "Badminton", new ArrayList<Player>()));
+        List<Team> teams = List.of(new Team(3L, "BasketBall", firstTeamPlayers), new Team(4L, "Badminton", new ArrayList<>()));
         when(teamRepository.findAll()).thenReturn(teams);
         when(teamGrpcClientService.getPlayersOfTeam(3L)).thenReturn(firstTeamPlayers);
         // Act

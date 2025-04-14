@@ -1,7 +1,7 @@
 package com.nashtech.teamService.controller;
 
 import com.nashtech.teamService.entities.Team;
-import com.nashtech.teamService.service.TeamService;
+import com.nashtech.teamService.service.TeamDatabaseService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,31 +18,27 @@ import java.util.List;
 @RestController
 @RequestMapping("/teams")
 public class TeamController {
-    private TeamService teamService;
+    private TeamDatabaseService teamDatabaseService;
 
-    public TeamController(TeamService teamService) {
-        this.teamService = teamService;
+    public TeamController(TeamDatabaseService teamDatabaseService) {
+        this.teamDatabaseService = teamDatabaseService;
     }
 
     @PostMapping
     public Team createTeam(@RequestBody Team team){
-        return teamService.createTeam(team);
+        return teamDatabaseService.createTeam(team);
     }
 
     @GetMapping("/{teamId}")
     public Team getSingleTeam(@PathVariable Long teamId){
-        return teamService.getOne(teamId);
+        return teamDatabaseService.getOne(teamId);
     }
 
     @GetMapping
     public List<Team> getAllTeams(){
-        return teamService.getAll();
+        return teamDatabaseService.getAll();
     }
 
-    @DeleteMapping
-    public void deleteTeam(@PathVariable Long teamId){
-        teamService.deleteTeam(teamId);
-    }
 }
 
 

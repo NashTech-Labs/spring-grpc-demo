@@ -13,10 +13,9 @@ import java.util.List;
  * </p>
  * @author [Nadra Ibrahim]
  */
-public interface TeamService {
+public interface TeamDatabaseService {
 
-    public Team createTeam(Team team);
-    public Team getOne(Long teamId);
-    public List<Team> getAll();
-    public void deleteTeam(Long teamId);
+    Team createTeam(Team team);
+    Team getOne(Long teamId);
+    List<Team> getAll();
 }
